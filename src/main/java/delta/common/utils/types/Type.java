@@ -122,6 +122,11 @@ public abstract class Type
     }
   }
 
+  /**
+   * Get the value of the designated parameter.
+   * @param parameterName Name of the parameter.
+   * @return A value or <code>null</code> if not defined.
+   */
   public final Object getParamValue(String parameterName)
   {
     Object ret=_paramValues.get(parameterName);
@@ -165,6 +170,10 @@ public abstract class Type
     return buildInstanceFromValue(value);
   }
 
+  /**
+   * Dump the contents of this type to the given stream.
+   * @param ps Output stream.
+   */
   public void dump(PrintStream ps)
   {
     String typeClass=(_typeClass!=null)?_typeClass.getName():"";
@@ -172,6 +181,9 @@ public abstract class Type
     ps.println("Values : "+_paramValues);
   }
 
+  /**
+   * 'Finish' this type: resolve all referenced type parameters.
+   */
   public void finish()
   {
     TypeClass typeClass=getTypeClass();
