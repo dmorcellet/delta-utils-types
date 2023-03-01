@@ -9,15 +9,13 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.types.utils.TypesLoggers;
-
 /**
  * Represents the class of a series of types.
  * @author DAM
  */
 public final class TypeClass
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(TypeClass.class);
 
   private String _name;
   private Class<? extends Type> _typeClass;
@@ -46,7 +44,7 @@ public final class TypeClass
       old=_parametersMap.get(key);
       if (old!=null)
       {
-        _logger.warn("Type class parameter ["+key+"] already defined for type class ["+name+"].");
+        LOGGER.warn("Type class parameter ["+key+"] already defined for type class ["+name+"].");
       }
       else
       {
@@ -114,7 +112,7 @@ public final class TypeClass
       }
       catch (Exception e)
       {
-        _logger.error("",e);
+        LOGGER.error("",e);
       }
     }
     return type;

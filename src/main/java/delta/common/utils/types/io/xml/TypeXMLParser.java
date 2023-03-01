@@ -15,7 +15,6 @@ import delta.common.utils.types.TypeClass;
 import delta.common.utils.types.TypeClassParameter;
 import delta.common.utils.types.TypeClassesRegistry;
 import delta.common.utils.types.TypesRegistry;
-import delta.common.utils.types.utils.TypesLoggers;
 import delta.common.utils.xml.DOMParsingTools;
 
 /**
@@ -24,7 +23,7 @@ import delta.common.utils.xml.DOMParsingTools;
  */
 public class TypeXMLParser
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(TypeXMLParser.class);
 
   // Tags
   private static final String PARAM_TAG="PARAM";
@@ -76,9 +75,9 @@ public class TypeXMLParser
           {
             if (parameter.isMandatory())
             {
-              _logger.warn("Missing parameter value for mandatory parameter ["+parameterName+"] on type ["+typeName+"]");
+              LOGGER.warn("Missing parameter value for mandatory parameter ["+parameterName+"] on type ["+typeName+"]");
               String defaultValue=parameter.getDefaultValue();
-              _logger.warn("Using default value ["+defaultValue+"]");
+              LOGGER.warn("Using default value ["+defaultValue+"]");
               strValues.add(defaultValue);
             }
           }
@@ -121,18 +120,18 @@ public class TypeXMLParser
           for(Iterator<String> it=unusedParameters.iterator();it.hasNext();)
           {
             unusedParameterName=it.next();
-            _logger.warn("Unused parameter ["+unusedParameterName+"] on type ["+typeName+"]");
+            LOGGER.warn("Unused parameter ["+unusedParameterName+"] on type ["+typeName+"]");
           }
         }
       }
       else
       {
-        _logger.warn("Cannot build an instance of type '"+typeName+"'");
+        LOGGER.warn("Cannot build an instance of type '"+typeName+"'");
       }
     }
     else
     {
-      _logger.warn("Unknown class type '"+className+"'");
+      LOGGER.warn("Unknown class type '"+className+"'");
     }
     return type;
   }

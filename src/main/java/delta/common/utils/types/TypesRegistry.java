@@ -5,15 +5,13 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.types.utils.TypesLoggers;
-
 /**
  * Registry for types.
  * @author DAM
  */
 public final class TypesRegistry
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(TypesRegistry.class);
 
   private static TypesRegistry _instance;
 
@@ -102,7 +100,7 @@ public final class TypesRegistry
     TypesNamespace old=_typeNamespaces.get(key);
     if (old!=null)
     {
-      _logger.warn("Types namespace ["+key+"] already defined.");
+      LOGGER.warn("Types namespace ["+key+"] already defined.");
       return false;
     }
     _typeNamespaces.put(key,typeClass);
@@ -176,12 +174,12 @@ public final class TypesRegistry
       ret=typesNamespace.getTypeByName(typeName);
       if (ret==null)
       {
-        _logger.error("Unknown type ["+typesNamespace.getName()+NAMESPACE_AND_TYPE_SEPARATOR+typeName+"]");
+        LOGGER.error("Unknown type ["+typesNamespace.getName()+NAMESPACE_AND_TYPE_SEPARATOR+typeName+"]");
       }
     }
     else
     {
-      _logger.error("Unknown types namespace ["+namespace+"]");
+      LOGGER.error("Unknown types namespace ["+namespace+"]");
     }
     return ret;
   }

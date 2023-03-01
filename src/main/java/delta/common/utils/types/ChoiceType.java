@@ -6,15 +6,13 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.types.utils.TypesLoggers;
-
 /**
  * Type for "choice" values.
  * @author DAM
  */
 public class ChoiceType extends Type
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(ChoiceType.class);
 
   // Type name
   /**
@@ -134,12 +132,12 @@ public class ChoiceType extends Type
         }
         else
         {
-          _logger.error("Cannot parse choice option ["+parameterValue+"] for choice ["+getName()+"]. Type is ["+_valuesType+"]");
+          LOGGER.error("Cannot parse choice option ["+parameterValue+"] for choice ["+getName()+"]. Type is ["+_valuesType+"]");
         }
       }
       else
       {
-        _logger.error("Cannot parse choice option ["+parameterValue+"] for choice ["+getName()+"] : no type");
+        LOGGER.error("Cannot parse choice option ["+parameterValue+"] for choice ["+getName()+"] : no type");
       }
     }
     else

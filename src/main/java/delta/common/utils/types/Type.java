@@ -6,15 +6,13 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.types.utils.TypesLoggers;
-
 /**
  * Base class for all type implementations.
  * @author DAM
  */
 public abstract class Type
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(Type.class);
 
   private static final String EMPTY="".intern();
 
@@ -100,7 +98,7 @@ public abstract class Type
     }
     else
     {
-      _logger.error("Unknown parameter ["+parameterName+"] for type ["+_name+"]");
+      LOGGER.error("Unknown parameter ["+parameterName+"] for type ["+_name+"]");
     }
   }
 
@@ -118,7 +116,7 @@ public abstract class Type
     }
     else
     {
-      _logger.error("Unknown parameter ["+parameterName+"] for type ["+_name+"]");
+      LOGGER.error("Unknown parameter ["+parameterName+"] for type ["+_name+"]");
     }
   }
 
@@ -211,7 +209,7 @@ public abstract class Type
               }
               else
               {
-                _logger.error("Default value ["+defaultValue+"] for parameter ["+parameterName+"] of type class ["+typeClass.getName()+"]");
+                LOGGER.error("Default value ["+defaultValue+"] for parameter ["+parameterName+"] of type class ["+typeClass.getName()+"]");
               }
             }
           }
@@ -222,13 +220,13 @@ public abstract class Type
         }
         else
         {
-          _logger.warn("Could not find type ["+typeName+"] used in type ["+_name+"] (class ["+typeClass.getName()+"])");
+          LOGGER.warn("Could not find type ["+typeName+"] used in type ["+_name+"] (class ["+typeClass.getName()+"])");
         }
       }
     }
     else
     {
-      _logger.error("No type class for type ["+_name+"]");
+      LOGGER.error("No type class for type ["+_name+"]");
     }
   }
 

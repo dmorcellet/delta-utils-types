@@ -5,15 +5,13 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.types.utils.TypesLoggers;
-
 /**
  * Registry for basic types.
  * @author DAM
  */
 public class TypesNamespace
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(TypesNamespace.class);
 
   private String _name;
   private Map<String,Type> _typesMap;
@@ -48,7 +46,7 @@ public class TypesNamespace
     Type old=_typesMap.get(key);
     if (old!=null)
     {
-      _logger.warn("Type ["+key+"] already defined.");
+      LOGGER.warn("Type ["+key+"] already defined.");
       return false;
     }
     _typesMap.put(key,type);

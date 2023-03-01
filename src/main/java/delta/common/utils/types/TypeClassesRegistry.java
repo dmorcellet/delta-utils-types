@@ -9,7 +9,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import delta.common.utils.types.io.xml.TypeClassXMLParser;
-import delta.common.utils.types.utils.TypesLoggers;
 import delta.common.utils.url.URLTools;
 
 /**
@@ -18,7 +17,7 @@ import delta.common.utils.url.URLTools;
  */
 public final class TypeClassesRegistry
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(TypeClassesRegistry.class);
 
   private static TypeClassesRegistry _instance;
 
@@ -60,7 +59,7 @@ public final class TypeClassesRegistry
     TypeClass old=_typeClasses.get(key);
     if (old!=null)
     {
-      _logger.warn("Type class ["+key+"] already defined.");
+      LOGGER.warn("Type class ["+key+"] already defined.");
       return false;
     }
     _typeClasses.put(key,typeClass);

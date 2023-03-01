@@ -5,15 +5,13 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import delta.common.utils.types.utils.TypesLoggers;
-
 /**
  * Registry for variables.
  * @author DAM
  */
 public final class VariablesRegistry
 {
-  private static final Logger _logger=TypesLoggers.getTypesLogger();
+  private static final Logger LOGGER=Logger.getLogger(VariablesRegistry.class);
 
   private static VariablesRegistry _instance;
 
@@ -54,7 +52,7 @@ public final class VariablesRegistry
     Variable old=_variables.get(key);
     if (old!=null)
     {
-      _logger.warn("Variable ["+key+"] already defined.");
+      LOGGER.warn("Variable ["+key+"] already defined.");
       return false;
     }
     _variables.put(key,variable);
