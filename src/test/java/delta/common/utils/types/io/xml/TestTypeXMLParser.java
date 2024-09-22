@@ -1,12 +1,12 @@
 package delta.common.utils.types.io.xml;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Element;
 
 import delta.common.utils.types.Type;
@@ -17,12 +17,13 @@ import delta.common.utils.xml.DOMParsingTools;
  * Unit test class for the types XML parser.
  * @author DAM
  */
-public class TestTypeXMLParser extends TestCase
+class TestTypeXMLParser
 {
   /**
    * Test the types parser.
    */
-  public void testParser()
+  @Test
+  void testParser()
   {
     URL url=URLTools.getFromClassPath("types.xml",this);
     TypeXMLParser parser=new TypeXMLParser();
@@ -34,7 +35,7 @@ public class TestTypeXMLParser extends TestCase
     {
       typeElement=it.next();
       type=parser.parseTypeNode(typeElement);
-      Assert.assertNotNull(type);
+      assertNotNull(type);
       type.finish();
       type.dump(System.out);
     }

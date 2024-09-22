@@ -1,66 +1,68 @@
 package delta.common.utils.types;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test class for the types system.
  * @author DAM
  */
-public class TestTypes extends TestCase
+@DisplayName("Types test")
+class TestTypes
 {
-  /**
-   * Constructor.
-   */
-  public TestTypes()
-  {
-    super("Types test");
-  }
-
   /**
    * Test the types classes registry.
    */
-  public void testTypeClassesRegistry()
+  @Test
+  void testTypeClassesRegistry()
   {
     TypeClassesRegistry registry=TypeClassesRegistry.getInstance();
-    Assert.assertNotNull(registry);
+    assertNotNull(registry);
   }
 
   /**
    * Test the generic type class retrieval.
    */
-  public void testGetTypeClassByName()
+  @Test
+  void testGetTypeClassByName()
   {
     TypeClassesRegistry registry=TypeClassesRegistry.getInstance();
     TypeClass intType=registry.getTypeClassByName(IntegerType.TYPE_NAME);
-    Assert.assertNotNull(intType);
+    assertNotNull(intType);
   }
 
   /**
    * Test the generic type retrieval.
    */
-  public void testGetTypeByName()
+  @Test
+  void testGetTypeByName()
   {
     TypesRegistry registry=TypesRegistry.getInstance();
     Type positiveIntType=registry.getType(BuiltInTypes.POSITIVE_INTEGER);
-    Assert.assertNotNull(positiveIntType);
+    assertNotNull(positiveIntType);
     Type intType=registry.getType(BuiltInTypes.INTEGER);
-    Assert.assertNotNull(intType);
+    assertNotNull(intType);
   }
 
   /**
    * Test the integer type.
    */
-  public void testIntegerType()
+  @Test
+  void testIntegerType()
   {
     IntegerType intType=new IntegerType(-4,100);
     Object cinquante=intType.parseFromString("50");
-    Assert.assertNotNull(cinquante);
-    Assert.assertTrue(cinquante instanceof Integer);
+    assertNotNull(cinquante);
+    assertTrue(cinquante instanceof Integer);
     Integer integer=(Integer)cinquante;
-    Assert.assertEquals(50,integer.intValue());
+    assertEquals(50,integer.intValue());
 
     Object notAnInt=intType.parseFromString("50a");
-    Assert.assertNull(notAnInt);
+    assertNull(notAnInt);
   }
 }
